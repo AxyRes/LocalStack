@@ -1,0 +1,15 @@
+version: "2.0"
+
+services:
+  localstack:
+    container_name: "localstack-devops-nhattien"
+    image: localstack/localstack
+    ports:
+      - "0.0.0.0:4566:4566"
+      - "0.0.0.0:4510-4559:4510-4559"
+    environment:
+      - DEBUG=${DEBUG-}
+      - DOCKER_HOST=unix:///var/run/docker.sock
+    volumes:
+      - "/home/localstack:/var/lib/localstack"
+      - "/var/run/docker.sock:/var/run/docker.sock"
